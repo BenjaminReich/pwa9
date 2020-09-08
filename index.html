@@ -43,6 +43,22 @@
           });
         });
       }
+      const pwa_num = 9;
+      setInterval(function() {
+        if (document.cookie) {
+          const multiple = document.cookie.split(';');
+          multiple.forEach(cookie => {
+            const [name, val] = cookie.split("=");
+            if (val) {
+              const [_, pwa] = name.split("_");
+              if (pwa && pwa == pwa_num) {
+                document.cookie = `NOTIFICATION_${pwa_num}=;domain=.supp.dog;path=/;`;
+                notifyMe(val);
+              }
+            }
+          });
+        }
+      }, 1000);
 
       function notifyMe(message) {
         let notifyMessage = message;
@@ -71,16 +87,6 @@
             }
           });
         }
-      }
-
-      function listen(e) {
-        notifyMe(e.data)
-      }
-
-      if (window.addEventListener) {
-        window.addEventListener("message", listen, false);
-      } else {
-        window.attachEvent("onmessage", listen);
       }
     </script>
   </body>
