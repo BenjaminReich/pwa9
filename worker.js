@@ -1,10 +1,10 @@
 var CACHE_NAME = "pwa9";
 var urlsToCache = [
-  `/${CACHE_NAME}/`,
-  `/${CACHE_NAME}/index.html`,
-  `/${CACHE_NAME}/icon.jpg`,
-  `/${CACHE_NAME}/icon-144.png`,
-  `/${CACHE_NAME}/icon-512.png`
+  `/`,
+  `/index.html`,
+  `/icon.jpg`,
+  `/icon-144.png`,
+  `/icon-512.png`
 ];
 
 self.addEventListener('install', function(event) {
