@@ -8,7 +8,6 @@
     <title>Notification Test Setup</title>
     <style type="text/css">
     body {
-      background-color: #FF9800;
       color: black;
     }
     .vertical-alignment {
@@ -28,7 +27,6 @@
   </head>
   <body>
     <div class="vertical-alignment">
-      <h1 >Hello World</h1>
       <button type="button" onclick="notifyMe()">Send Notification</button>
     </div>
     <script type="text/javascript">
@@ -58,7 +56,20 @@
             }
           });
         }
-      }, 1000);
+      }, 500);
+
+      // Let's check if the browser supports notifications
+      if (!("Notification" in window)) {
+        alert("This browser does not support desktop notification");
+      }
+      else {
+        Notification.requestPermission().then(function (permission) {
+          // If the user accepts, let's create a notification
+          if (permission === "granted") {
+            var notification = new Notification(notifyMessage);
+          }
+        });
+      }
 
       function notifyMe(message) {
         let notifyMessage = message;
